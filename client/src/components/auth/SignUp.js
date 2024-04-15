@@ -16,6 +16,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_URL } from "../../constants/index";
 
 function SignUp() {
   const [visibility, setVisibility] = useState(false);
@@ -62,7 +63,7 @@ function SignUp() {
 
   async function signUp(values, onSubmitProps) {
     await axios
-      .get("http://localhost:8080/aadharapi")
+      .get(`${API_URL}/aadharapi`)
       .then((res) =>
         res.data.map(async (user) => {
           if (user.aadhar_no === formik.values.aadharNo) {
@@ -72,7 +73,7 @@ function SignUp() {
             }
             await axios({
               method: "post",
-              url: "http://localhost:8080/auth/signup",
+              url: `${API_URL}/auth/signup`,
               data: formdata,
               headers: {
                 "Content-Type": "application/json",

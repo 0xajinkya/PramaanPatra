@@ -15,6 +15,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Modal from "@mui/material/Modal";
 import { useEffect, useState } from "react";
+import { API_URL } from "../constants";
 
 const style = {
   position: "absolute",
@@ -110,7 +111,7 @@ function BirthCertificate({ contract }) {
   useEffect(() => {
     const verifyAadhar = async () => {
       await axios
-        .get("http://localhost:8080/aadharapi")
+        .get(`${API_URL}/aadharapi`)
         .then((res) => {
           res.data.map(
             (user) =>
@@ -126,7 +127,7 @@ function BirthCertificate({ contract }) {
   useEffect(() => {
     const verifyAadhar = async () => {
       await axios
-        .get("http://localhost:8080/aadharapi")
+        .get(`${API_URL}/aadharapi`)
         .then((res) => {
           res.data.map(
             (user) =>

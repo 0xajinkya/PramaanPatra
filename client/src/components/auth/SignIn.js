@@ -16,6 +16,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_URL } from "../../constants";
 
 function SignIn() {
   const [visibility, setVisibility] = useState(false);
@@ -44,7 +45,7 @@ function SignIn() {
     }
     await axios({
       method: "post",
-      url: "http://localhost:8080/auth/signin",
+      url: `${API_URL}/auth/signin`,
       data: formdata,
       headers: {
         "Content-Type": "application/json",

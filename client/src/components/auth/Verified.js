@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Box, Button, Card, Typography } from "@mui/material";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
+import { API_URL } from "../../constants/index";
 
 function Verified() {
   const [verified, setVerified] = useState(false);
@@ -11,7 +12,7 @@ function Verified() {
   useEffect(() => {
     const verifyEmailUrl = async () => {
       await axios
-        .get(`http://localhost:8080/auth/${params.id}/verify/${params.token}`)
+        .get(`${API_URL}/auth/${params.id}/verify/${params.token}`)
         .then(() => {
           setVerified(true);
         })
