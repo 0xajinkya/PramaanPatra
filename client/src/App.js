@@ -3,6 +3,7 @@ import certificate from "./artifacts/contracts/Certificate.sol/Certificate.json"
 import BirthCertificate from "./components/BirthCertificate";
 import ShowCertificate from "./components/ShowCertificate";
 import { ethers } from "ethers";
+import {ShowCertificates} from "./components/ShowCertificates";
 import { Routes, Route } from "react-router-dom";
 import { Box } from "@mui/material";
 import SignUp from "./components/auth/SignUp";
@@ -59,6 +60,10 @@ function App() {
         <Route
           path="/create-birth-certificate"
           element={<BirthCertificate contract={contract} />}
+        />
+        <Route
+          path="/certificate/:id/birth-certificate"
+          element={<ShowCertificates contract={contract} account={account} />}
         />
         <Route
           path="/certificate/:id/birth-certificate/:txid"

@@ -55,7 +55,7 @@ router.get("/", async (req, res) => {
         const birthC = await BirthCertificate.find({
             issuingTo: walletAddr
         });
-        return res.status(200).json({ message: "Birth certificates fetched!", birthCertificate: birthC });
+        return res.status(200).json({ message: "Birth certificates fetched!", birthCertificates: birthC });
     } catch (error) {
         return res.status(400).json({ message: error.message || "Cannot get birth certificate!" });
     }
