@@ -8,6 +8,7 @@ import { User } from "./models/auth.js";
 import authRoute from "./routes/signUp.js";
 import { aadharDetails } from "./API/aadharDetails.js";
 import aadharRoute from "./routes/aadhar.js";
+import { birthRouter } from "./routes/birth-certificate.js";
 
 mongoose
   .connect("mongodb+srv://0xajinkya:0xajinkya@cluster0.jigc8rk.mongodb.net/", {
@@ -45,9 +46,9 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use("/auth", authRoute);
+app.use("/birth", birthRouter);
 app.use("/", aadharRoute);
 app.get("/aadharapi", (req, res) => res.send(aadharDetails));
-
 app.listen(PORT, () => {
   console.log(`Listening on ${PORT}`);
 });

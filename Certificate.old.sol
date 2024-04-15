@@ -32,6 +32,11 @@ contract Certificate {
         string memory birth_location,
         address _issuedTo
     ) external {
+        for (uint i = 0; i < haveBirthCertificate.length; i++) {
+            if (haveBirthCertificate[i] == _issuedTo) {
+                revert("This account already has a certificate provided!");
+            }
+        }
         childDetails[_issuedTo] = ChildDetails(
             name,
             father_name,

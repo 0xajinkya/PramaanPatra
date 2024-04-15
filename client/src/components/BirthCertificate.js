@@ -81,6 +81,19 @@ function BirthCertificate({ contract }) {
         formik.values.issuedTo
       );
       console.log(request);
+
+      const dbEntry = await axios.post(`${API_URL}/birth`, {
+        childName: formik.values.child_name,
+        dateOfBirth: formik.values.birth_date,
+        birthPlace: formik.values.birth_location,
+        issuingTo: formik.values.issuedTo,
+        fatherName: formik.values.child_father_name,
+        fatherAadhar: formik.values.father_aadhar_no,
+        montherName: formik.values.child_mother_name,
+        motherAadhar: formik.values.mother_aadhar_no,
+        txnHash: request.hash
+      });
+
       navigate(
         `/certificate/${formik.values.issuedTo}/birth-certificate/${request.hash}`
       );
