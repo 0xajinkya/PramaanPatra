@@ -3,7 +3,8 @@ import { Box, Button, Card, Divider, Stack, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import html2canvas from "html2canvas";
 import jspdf from "jspdf";
-
+import axios from "axios";
+import { API_URL } from "../constants";
 function ShowCertificate({ contract }) {
   const [data, setData] = useState(null);
   const params = useParams();
@@ -12,8 +13,10 @@ function ShowCertificate({ contract }) {
   useEffect(() => {
     const fetchedData = async () => {
       try {
-        const fetchedData = await contract.getAllChildDetails(`${params.id}`);
-        setData(fetchedData);
+        // const fetchedData = await contract.getAllChildDetails(`${params.id}`);
+        const fetchedData = await axios.get(`${API_URL}/birth/${params.txid}`);
+        console.log(fetchedData.data)
+        setData(fetchedData.data.birthCertificate);
       } catch (error) {
         console.log(error.message);
       }
@@ -72,11 +75,11 @@ function ShowCertificate({ contract }) {
               Transaction Details
             </Typography>
             <Stack spacing={2}>
-              <Typography>Transaction hash: {params.txid}</Typography>
+              <Typography>Transaction hash: {data.txnHash}</Typography>
               <Divider />
               <Typography>Issued from: {data.issuedFrom}</Typography>
               <Divider />
-              <Typography>Issued to: {data.issuedTo}</Typography>
+              <Typography>Issued to: {data.issuingTo}</Typography>
               <Divider />
               <Typography>Contract Address: {contract.address}</Typography>
               <Divider />
@@ -84,15 +87,15 @@ function ShowCertificate({ contract }) {
                 Used Web3 Provider: {contract.provider.connection.url}
               </Typography>
               <Divider />
-              <Typography>Newborn Name: {data.child_name}</Typography>
+              <Typography>Newborn Name: {data.childName}</Typography>
               <Divider />
-              <Typography>Father Name: {data.child_father_name}</Typography>
+              <Typography>Father Name: {data.fatherName}</Typography>
               <Divider />
-              <Typography>Mother Name: {data.child_mother_name}</Typography>
+              <Typography>Mother Name: {data.motherName}</Typography>
               <Divider />
-              <Typography>Date of Birth: {data.birth_date}</Typography>
+              <Typography>Date of Birth: {data.dateOfBirth}</Typography>
               <Divider />
-              <Typography>Place of Birth: {data.birth_location}</Typography>
+              <Typography>Place of Birth: {data.birthPlace}</Typography>
               <Divider />
               <Box
                 width={100}

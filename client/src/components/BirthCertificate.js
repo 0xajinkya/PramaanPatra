@@ -29,7 +29,7 @@ const style = {
   p: 4,
 };
 
-function BirthCertificate({ contract }) {
+function BirthCertificate({ contract, account }) {
   const [open, setOpen] = useState(false);
   const [verified, setVerified] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
@@ -91,7 +91,8 @@ function BirthCertificate({ contract }) {
         fatherAadhar: formik.values.father_aadhar_no,
         motherName: formik.values.child_mother_name,
         motherAadhar: formik.values.mother_aadhar_no,
-        txnHash: request.hash
+        txnHash: request.hash,
+        issuedFrom: account
       });
 
       navigate(

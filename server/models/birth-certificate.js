@@ -12,7 +12,8 @@ const BirthCertificateSchema = new Schema({
     txnHash: {
         unique: true,
         type: String
-    }
+    },
+    issuedFrom: String
 });
 const BirthCertificate = model("BirthCeritificate", BirthCertificateSchema);
 export { BirthCertificate };

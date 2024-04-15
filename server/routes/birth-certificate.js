@@ -14,7 +14,8 @@ router.post("/", async (req, res) => {
             fatherAadhar,
             motherName,
             motherAadhar,
-            txnHash
+            txnHash,
+            issuedFrom
         } = req.body;
         const birthC = await BirthCertificate.create({
             childName,
@@ -25,7 +26,8 @@ router.post("/", async (req, res) => {
             fatherAadhar,
             motherName,
             motherAadhar,
-            txnHash
+            txnHash,
+            issuedFrom
         });
         return res.status(201).json({ message: "Birth certificate issued!", birthCertificate: birthC })
     } catch (error) {
