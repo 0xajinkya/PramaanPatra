@@ -12,7 +12,7 @@ router.post("/", async (req, res) => {
             issuingTo,
             fatherName,
             fatherAadhar,
-            montherName,
+            motherName,
             motherAadhar,
             txnHash
         } = req.body;
@@ -23,7 +23,7 @@ router.post("/", async (req, res) => {
             issuingTo,
             fatherName,
             fatherAadhar,
-            montherName,
+            motherName,
             motherAadhar,
             txnHash
         });
