@@ -84,6 +84,7 @@ function BirthCertificate({ contract }) {
         `/certificate/${formik.values.issuedTo}/birth-certificate/${request.hash}`
       );
     } catch (error) {
+      console.log(error);
       handleOpen();
     }
   }
