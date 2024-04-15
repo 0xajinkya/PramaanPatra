@@ -89,7 +89,7 @@ function BirthCertificate({ contract }) {
         issuingTo: formik.values.issuedTo,
         fatherName: formik.values.child_father_name,
         fatherAadhar: formik.values.father_aadhar_no,
-        montherName: formik.values.child_mother_name,
+        motherName: formik.values.child_mother_name,
         motherAadhar: formik.values.mother_aadhar_no,
         txnHash: request.hash
       });
